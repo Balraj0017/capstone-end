@@ -38,7 +38,7 @@ pipeline{
          
                 steps{
                     // sh 'echo $dockerhub_USR | xargs echo'
-                  sh "dockerImage = docker.build mysql:5.7.8"
+                  sh "docker --version"
                 }
             } 
 
