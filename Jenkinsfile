@@ -1,8 +1,9 @@
 pipeline{
     agent any
     environment {
-      dockerhub_repo= "balraj0017/springbootapp"  
+      dockerhub_repo = "balraj0017/springbootapp"  
       dockerhub=credentials('dockerhub_id')
+      dockerImage = ''
    }
     tools { 
         maven 'maven3'
