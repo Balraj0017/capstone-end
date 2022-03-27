@@ -5,7 +5,6 @@ pipeline{
    }
     tools { 
         maven 'maven3'
-        Docker 'docker_1'
     }
     stages
        {
@@ -34,17 +33,14 @@ pipeline{
                     sh "mvn package"
                 }
             }
-            stage('Building our image')
+            stage('build image')
             {
-                 steps{
-                     script {
-                               dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                            }
-                      }
-            }
-
-
-
+         
+                steps{
+                    // sh 'echo $dockerhub_USR | xargs echo'
+                    sh 'docker build -t capstone:${GIT_COMMIT} .'
+                }
+            } 
 
        }
 
