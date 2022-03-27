@@ -1,6 +1,7 @@
 pipeline{
     agent any
     environment {
+      dockerhub_repo= "balraj0017/springbootapp"  
       dockerhub=credentials('dockerhub_id')
    }
     tools { 
@@ -37,8 +38,7 @@ pipeline{
             {
          
                 steps{
-                    // sh 'echo $dockerhub_USR | xargs echo'
-                  sh "docker --version"
+                   dockerImage = docker.build dockerhub_repo + ":$GIT_COMMIT-build-$BUILD_NUMBER"
                 }
             } 
 
